@@ -55,3 +55,7 @@ group :development do
     gem 'terminal-notifier-guard'
   end
 end
+
+group :production do
+   gem 'rails_12factor'
+ end
