@@ -50,10 +50,10 @@ group :development do
   gem 'spring'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
-  if `uname` =~ /Darwin/
+  # if `uname` =~ /Darwin/
     gem 'rb-fsevent'
     gem 'terminal-notifier-guard'
-  end
+  # end
 end
 
 group :production do
