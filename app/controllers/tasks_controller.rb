@@ -5,7 +5,7 @@ class TasksController < ApplicationController
         count: Task.count,
         page: 0
       },
-      tasks: Task.all
+      tasks: Task.order(id: :asc)
     }
   end
 
