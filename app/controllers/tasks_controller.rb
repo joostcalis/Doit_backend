@@ -21,7 +21,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = task.find(params[:id])
+    task = Task.find(params[:id])
 
     if task.update(task_params)
       render json: { task: task }
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = task.find(params[:id])
+    task = Task.find(params[:id])
 
     if task.destroy
       render json: { task: nil }
