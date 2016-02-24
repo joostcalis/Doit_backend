@@ -4,9 +4,10 @@ RSpec.describe TasksController, type: :controller do
   describe TasksController do
   render_views # <-- You need this to test your json response!
 
-  it "should render successfully" do
+  it "should render in json successfully" do
     get :index, :format => :json
-    response.should be_success
+    it  is_expected.to be succes 
+
   end
 
 #   it "should fail when code is not present" do
