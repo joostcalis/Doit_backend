@@ -5,7 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Project.create([
+{title: "test", body: "testtesttesttest"},
+{title: "test1", body: "testtesttesttest1"}
+  ])
+  
 Task.create([
-{title: "huiswerk"},
-{title: "api maken", finished: true}
+{title: "huiswerk", project_id: 1},
+{title: "api maken", finished: true, project_id: 2}
 ])
