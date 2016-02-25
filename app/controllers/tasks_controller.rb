@@ -10,9 +10,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(song_params)
-    @project = Project.find(params[:project_id])
-    @task.project_id = @task.id
+    task = Task.new(song_params)
+    project = Project.find(params[:project_id])
+    task.project_id = task.id
 
     if task = Task.create(task_params)
       render json: { task: task }
