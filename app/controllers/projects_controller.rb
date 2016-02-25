@@ -9,13 +9,13 @@ class ProjectsController < ApplicationController
     }
   end
 
-    # def show
-    #   project = Project.find(params[:id])
-    #   render json: {
-    #     project: project,
-    #     tasks: project.tasks
-    #   }
-    # end
+    def show
+      project = Project.find(params[:id])
+      render json: {
+        project: project,
+        tasks: project.tasks
+      }
+    end
 
   def create
     if project = Project.create(project_params)
