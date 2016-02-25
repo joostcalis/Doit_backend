@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     render json: {
       meta: {
-        count: @projects.tasks.count,
+        count: @project.tasks.count,
         page: 0
       },
       tasks: @project.tasks.order(:finished, :id)
