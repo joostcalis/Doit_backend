@@ -5,11 +5,15 @@ class TasksController < ApplicationController
         count: Task.count,
         page: 0
       },
-      tasks: Task.order(id: :asc)
+      tasks: Task.all
     }
   end
 
   def create
+    @task = Task.new(song_params)
+    @project = Project.find(params[:project_id])
+    @task.project_id = @task.id
+
     if task = Task.create(task_params)
       render json: { task: task }
     else
@@ -21,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
+    task = task.find(params[:id])
 
     if task.update(task_params)
       render json: { task: task }
@@ -34,7 +38,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find(params[:id])
+    task = task.find(params[:id])
 
     if task.destroy
       render json: { task: nil }
