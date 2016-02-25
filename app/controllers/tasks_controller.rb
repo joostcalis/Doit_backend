@@ -10,8 +10,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params)
-    project = Project.find(params[:project_id])
+    task = Task.new
+    project = Project.find(params[:id])
     task.project_id = project.id
 
     if task = Task.save
