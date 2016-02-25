@@ -1,18 +1,18 @@
 class TasksController < ApplicationController
+  before_action :set_project
   def index
     render json: {
       meta: {
         count: Task.count,
         page: 0
       },
-      tasks: Task.all
+      tasks: @project.tasks.order(:finished, :id)
     }
   end
 
   def create
     task = Task.new
-    project = Project.find(params[:id])
-    task.project_id = project.id
+    task.project = @project
 
     if task = Task.save
       render json: { task: task }
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = task.find(params[:id])
+    task = @project.tasks.find(params[:id])
 
     if task.update
       render json: { task: task }
@@ -50,6 +50,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_project
+     @project = Project.find(params[:project_id])
+   end
 
   def task_params
     params.require(:task).permit(:title, :body, :finished, :end_date)
