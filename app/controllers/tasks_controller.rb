@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_project
+
   def index
     render json: {
       meta: {
-        count: Task.count,
+        count: @projects.tasks.count,
         page: 0
       },
       tasks: @project.tasks.order(:finished, :id)
