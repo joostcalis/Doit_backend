@@ -10,11 +10,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(song_params)
+    task = Task.new(task_params)
     project = Project.find(params[:project_id])
     task.project_id = project.id
 
-    if task = Task.create(task_params)
+    if task = Task.save
       render json: { task: task }
     else
       render json: {
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def update
     task = task.find(params[:id])
 
-    if task.update(task_params)
+    if task.update
       render json: { task: task }
     else
       render json: {
