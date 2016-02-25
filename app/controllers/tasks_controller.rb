@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new
+    task = Task.new(task_params)
     task.project = @project
 
     if task = Task.save
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   def update
     task = @project.tasks.find(params[:id])
 
-    if task.update
+    if task.update(task_params)
       render json: { task: task }
     else
       render json: {
@@ -57,6 +57,6 @@ class TasksController < ApplicationController
    end
 
   def task_params
-    params.require(:task).permit(:title, :body, :finished, :end_date)
+    params.require(:task).permit(:title, :finished)
   end
 end
