@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     task = Task.new(task_params)
     task.project = @project
 
-    if task = Task.save
+    if task = task.save
       render json: { task: task }
     else
       render json: {
