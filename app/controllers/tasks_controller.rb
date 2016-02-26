@@ -39,13 +39,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = task.find(params[:id])
+    task = @project.tasks.find(params[:id])
 
     if task.destroy
       render json: { task: nil }
     else
       render json: {
-        message: "Could not destroy Task, please try again",
+        message: "Could not destroy Todo, please try again",
       }, status: :unprocessible_entity
     end
   end
